@@ -1,25 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
 
-function App() {
+import { BrowserRouter as Router, Switch, Route, Redirect } from "react-router-dom";
+
+import NavBar from "./components/NavBar";
+import Dashboard from "./pages/Dashboard";
+import Metrics from "./pages/Metrics";
+import Weights from "./pages/Weights";
+import Settings from "./pages/Settings";
+import Modal from "./pages/Modal";
+import ThemeProvider from "./providers/ThemeProvider";
+
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <ThemeProvider>
+      <Router>
+        <NavBar />
+        <Switch>
+          <Route path="/" exact>
+            <Redirect to="/dashboard" />
+          </Route>
+          <Route path="/Dashboard" exact component={Dashboard} />
+          <Route path="/Metrics" exact component={Metrics} />
+          <Route path="/Weights" exact component={Weights} />
+          <Route path="/Settings" exact component={Settings} />
+          <Route path="/Modal" exact component={Modal} />
+        </Switch>
+      </Router>
+    </ThemeProvider>
   );
-}
+};
 
 export default App;
