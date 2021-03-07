@@ -1,33 +1,95 @@
-import React from "react";
+import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { IoHomeOutline, IoCogOutline, IoFitnessOutline, IoFileTrayFullOutline, IoAddOutline } from "react-icons/io5";
+import { IoHomeOutline, IoCogOutline, IoFitnessOutline, IoFileTrayFullOutline, IoAddOutline, IoCloseOutline } from "react-icons/io5";
 import { ThemeContext } from "../providers/ThemeProvider";
+
+import "react-responsive-modal/styles.css";
+import { Modal } from "react-responsive-modal";
+import AddArrivalComponent from "./AddArrivalComponent";
+import AddWeightComponent from "./AddWeightComponent";
 
 const NavBar = () => {
   const { theme } = React.useContext(ThemeContext);
+  const [isModalOpened, setModalOpened] = useState(false);
+  const [isFirstSegment, setFirstSegment] = useState(true);
 
   return (
     <div className="flex justify-center">
       <div
-        className={`absolute bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-10 rounded-xl text-${theme}-tsec`}
+        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-90 rounded-xl text-${theme}-tsec`}
       >
-        <NavLink to="/Dashboard" activeClassName={`text-${theme}-primary`}>
+        <NavLink to="/Dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoHomeOutline size="1.7em" />
         </NavLink>
-        <NavLink to="/Metrics" activeClassName={`text-${theme}-primary`}>
+        <NavLink to="/Metrics" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoFitnessOutline size="1.7em" />
         </NavLink>
-        <div className="flex items-center justify-center w-14 h-14 mb-7 bg-gray-700 rounded-full text-white">
+        <div
+          className="flex items-center justify-center w-14 h-14 mb-7 bg-gray-700 rounded-full text-white"
+          onClick={() => {
+            setModalOpened(!isModalOpened);
+          }}
+        >
           <IoAddOutline size="2em" />
         </div>
-        <NavLink to="/Weights" activeClassName={`text-${theme}-primary`}>
+        <NavLink to="/Weights" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoFileTrayFullOutline size="1.7em" />
         </NavLink>
-        <NavLink to="/Settings" activeClassName={`text-${theme}-primary`}>
+        <NavLink to="/Settings" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoCogOutline size="1.7em" />
         </NavLink>
-        {/* <Link to="/Modal">Modal</Link> */}
       </div>
+
+      {/* Modal */}
+      <Modal
+        open={isModalOpened}
+        onClose={() => setModalOpened(false)}
+        classNames={{
+          modal: theme === "dark" ? "customModalDark" : "customModal",
+        }}
+        showCloseIcon={false}
+        animationDuration={350}
+      >
+        <div className="p-5">
+          <div className="flex justify-end">
+            <IoCloseOutline size="2em" className={`text-${theme}-primary`} onClick={() => setModalOpened(false)} />
+          </div>
+          {isFirstSegment ? (
+            <div className="w-full flex justify-center items-center py-5">
+              <button
+                className={`w-2/4 text-xl rounded-l-lg text-${theme}-primary bg-${theme}-primary bg-opacity-10 h-10 border border-${theme}-tpr border-opacity-20`}
+              >
+                Příchod
+              </button>
+              <button
+                onClick={() => setFirstSegment(false)}
+                className={`w-2/4 text-xl rounded-r-lg text-${theme}-tsec bg-${theme}-elev h-10 border border-${theme}-tpr border-opacity-20`}
+              >
+                Váha
+              </button>
+            </div>
+          ) : (
+            <div className="w-full flex justify-center items-center py-5">
+              <button
+                onClick={() => setFirstSegment(true)}
+                className={`w-2/4 text-xl rounded-l-lg text-${theme}-tsec bg-${theme}-elev h-10 border border-${theme}-tpr border-opacity-20`}
+              >
+                Příchod
+              </button>
+              <button
+                className={`w-2/4 text-xl rounded-r-lg text-${theme}-primary bg-${theme}-primary bg-opacity-10 h-10 border border-${theme}-tpr border-opacity-20`}
+              >
+                Váha
+              </button>
+            </div>
+          )}
+          {isFirstSegment ? (
+            <AddArrivalComponent closeHandler={() => setModalOpened(false)} />
+          ) : (
+            <AddWeightComponent closeHandler={() => setModalOpened(false)} />
+          )}
+        </div>
+      </Modal>
     </div>
   );
 };

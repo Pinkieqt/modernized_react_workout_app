@@ -5,7 +5,7 @@ module.exports = {
     extend: {
       colors: {
         light: {
-          nav: "#000000",
+          nav: "#F0F0F0",
           bg: "#FFFFFF",
           elev: "#FFFFFF",
           tpr: "#000000",
@@ -15,7 +15,7 @@ module.exports = {
           primary: "#007aff",
         },
         dark: {
-          nav: "#FFFFFF",
+          nav: "#1C1C1E",
           bg: "#000000",
           elev: "#1C1C1E",
           tpr: "#FFFFFF",
