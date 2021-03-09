@@ -7,7 +7,7 @@ module.exports = {
         light: {
           nav: "#F0F0F0",
           bg: "#FFFFFF",
-          elev: "#FFFFFF",
+          elev: "#f3f3f3",
           tpr: "#000000",
           tsec: "#8A8A8E",
           tter: "#C4C4C6",

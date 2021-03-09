@@ -1,4 +1,4 @@
-/* React Responsive Modal --------------------------------------------- */
+/* React Responsive Modal - APPEND MODAL --------------------------------------------- */
 @keyframes customEnterModalAnimation {
   0% {
     transform: translateY(100%);
@@ -15,10 +15,6 @@
   100% {
     transform: translateY(100%);
   }
-}
-
-.customOverlay {
-  background: rgba(0, 179, 255, 0.7) !important;
 }
 
 .customModal {
@@ -39,7 +35,22 @@
   color: #ffffff !important;
 }
 
-/* Modern Calendar Picker */
+/* React Responsive Modal WEIGHT EDITING --------------------------------------------- */
+.customEditModal {
+  width: 90%;
+  border-radius: 20px;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.customEditModalDark {
+  width: 90%;
+  border-radius: 20px;
+  background-color: #1c1c1e !important;
+  color: #ffffff !important;
+}
+
+/* Modern Calendar Picker --------------------------------------------- */
 .customCalendarDark {
   color: #ffffff !important;
 }
