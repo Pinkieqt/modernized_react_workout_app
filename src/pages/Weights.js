@@ -1,6 +1,5 @@
 import React, { useContext } from "react";
 import { useState } from "react";
-import { IoCloseOutline } from "react-icons/io5";
 import Modal from "react-responsive-modal";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Button from "../templates/Button";

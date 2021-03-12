@@ -10,6 +10,7 @@ import Weights from "./pages/Weights";
 import Settings from "./pages/Settings";
 import ThemeProvider from "./providers/ThemeProvider";
 import DefaultUserProvider from "./providers/DefaultUserProvider";
+import Login from "./pages/Login";
 
 const App = () => {
   return (
@@ -25,6 +26,7 @@ const App = () => {
             <Route path="/Metrics" exact component={Metrics} />
             <Route path="/Weights" exact component={Weights} />
             <Route path="/Settings" exact component={Settings} />
+            <Route path="/Login" exact component={Login} />
           </Switch>
         </Router>
       </DefaultUserProvider>

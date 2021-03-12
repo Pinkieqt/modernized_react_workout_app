@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { DefUserContext } from "../providers/DefaultUserProvider";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Button from "../templates/Button";
 import IncrementButton from "../templates/IncrementButton";
