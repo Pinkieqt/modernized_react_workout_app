@@ -15,7 +15,7 @@ const Settings = () => {
       <Header>Nastavení</Header>
       <div className="w-full flex justify-between items-center my-4 ">
         <Subheader>Dark mode</Subheader>
-        <Switch checked={theme === "dark" ? true : false} offColor="#1d1f2f" onColor="#FDB813" onChange={setTheme} />
+        <Switch checked={theme === "dark" ? true : false} offColor="#1d1f2f" onColor="#007aff" onChange={setTheme} />
       </div>
       <button className="w-full flex justify-between items-center my-4 ">
         <Subheader>Exportovat data</Subheader>

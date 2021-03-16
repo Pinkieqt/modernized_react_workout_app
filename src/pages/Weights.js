@@ -17,15 +17,15 @@ const Weights = () => {
   const [inputWork, setInputWork] = useState(66.0);
 
   let dummydata = [
-    { label: "Deadlift", max: 54, work: 33, cat: "legs" },
-    { label: "Bench", max: 72, work: 124, cat: "chest" },
-    { label: "Bicep curl", max: 88, work: 16, cat: "arms" },
-    { label: "sda", max: 54, work: 33, cat: "shoulders" },
-    { label: "ewqe", max: 72, work: 124, cat: "back" },
-    { label: "Biscep curl", max: 88, work: 16, cat: "arms" },
-    { label: "Deadelift", max: 54, work: 33, cat: "legs" },
-    { label: "Benwch", max: 72, work: 124, cat: "chest" },
-    { label: "Biceqp curl", max: 88, work: 16, cat: "arms" },
+    { label: "Deadlift", max: 54, work: 33, cat: "nohy" },
+    { label: "Bench", max: 72, work: 124, cat: "hrudník" },
+    { label: "Bicep curl", max: 88, work: 16, cat: "ruce" },
+    { label: "sda", max: 54, work: 33, cat: "ramena" },
+    { label: "ewqe", max: 72, work: 124, cat: "záda" },
+    { label: "Biscep curl", max: 88, work: 16, cat: "ruce" },
+    { label: "Deadelift", max: 54, work: 33, cat: "nohy" },
+    { label: "Benwch", max: 72, work: 124, cat: "hrudník" },
+    { label: "Biceqp curl", max: 88, work: 16, cat: "ruce" },
   ];
 
   // Generate Cards content
@@ -34,21 +34,21 @@ const Weights = () => {
       let categoryColor = "";
 
       switch (element.cat) {
-        case "chest":
-          categoryColor = "text-red-400 bg-red-400";
+        case "hrudník":
+          categoryColor = "text-magma-1 bg-magma-1";
           break;
-        case "arms":
-          categoryColor = "text-yellow-400 bg-yellow-400";
+        case "ruce":
+          categoryColor = "text-magma-2 bg-magma-2";
           break;
-        case "back":
-          categoryColor = "text-blue-400 bg-blue-400";
+        case "záda":
+          categoryColor = "text-magma-3 bg-magma-3";
           break;
-        case "shoulders":
-          categoryColor = "text-pink-400 bg-pink-400";
+        case "ramena":
+          categoryColor = "text-magma-4 bg-magma-4";
           break;
         default:
           //legs
-          categoryColor = "text-green-400 bg-green-400";
+          categoryColor = "text-magma-5 bg-magma-5";
       }
 
       return (
@@ -65,11 +65,11 @@ const Weights = () => {
             <p className={`text-${theme}-tpr my-2 text-lg font-semibold text-center`}>{element.label}</p>
             <div className="w-full flex flex-row justify-center text-center">
               <div className="w-1/2 flex flex-col">
-                <p className={`text-${theme}-tpr  text-2xl font-semibold`}>{element.max}</p>
+                <p className={`text-${theme}-tsec  text-2xl`}>{element.max}</p>
                 <p className={`text-${theme}-tsec`}>work</p>
               </div>
               <div className="w-1/2 flex flex-col">
-                <p className={`text-${theme}-tpr text-2xl font-semibold`}>{element.work}</p>
+                <p className={`text-${theme}-tsec text-2xl`}>{element.work}</p>
                 <p className={`text-${theme}-tsec`}>max</p>
               </div>
             </div>

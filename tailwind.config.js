@@ -22,13 +22,29 @@ module.exports = {
           tsec: "#8D8D93",
           tter: "#47474A",
           // colors
-          primary: "#0a84ff",
+          primary: "#C8FF3A",
         },
+        magma: {
+          1: "#007AFF",
+          2: "#3EDDEF", //00FFD9
+          3: "#C8FF3A",
+          4: "#FBD16A",
+          5: "#FF476C",
+          6: "#CF318A", //AE8CA3
+        },
+        // magmabackup: {
+        //   1: "#007AFF",
+        //   2: "#7CE4E8", //00FFD9
+        //   3: "#E8FD5D",
+        //   4: "#8FA5F5",
+        //   5: "#F35361",
+        //   6: "#FCB0B3", //AE8CA3
+        // },
       },
     },
   },
   variants: {
     extend: {},
   },
-  plugins: [],
+  plugins: [require("@tailwindcss/forms")],
 };

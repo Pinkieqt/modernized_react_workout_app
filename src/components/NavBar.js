@@ -25,7 +25,7 @@ const NavBar = () => {
           <IoFitnessOutline size="1.7em" />
         </NavLink>
         <div
-          className="flex items-center justify-center w-14 h-14 mb-7 bg-gray-700 rounded-full text-white"
+          className={`flex items-center justify-center w-14 h-14 bg-gray-700 shadow-xl rounded-full text-white`}
           onClick={() => {
             setModalOpened(!isModalOpened);
           }}

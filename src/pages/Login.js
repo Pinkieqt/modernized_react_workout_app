@@ -24,10 +24,15 @@ const Login = () => {
 
       {/* Checkbox */}
       <label className="inline-flex items-center mb-10">
-        <input type="checkbox" className="h-5 w-5 text-red-600 " value="staySignedIn" onChange={() => setStaySignedIn(!staySignedIn)}></input>
+        <input
+          type="checkbox"
+          className="form-checkbox bg-black text-dark-primary rounded h-5 w-5"
+          value={staySignedIn}
+          onChange={() => setStaySignedIn(!staySignedIn)}
+        ></input>
         <span className={`text-${theme}-tsec ml-3`}> Zůstat v aplikaci přihlášen?</span>
       </label>
-      <button className={`bg-${theme}-primary text-white w-full text-lg p-3 rounded-xl font-semibold mb-6`}>Přihlásit</button>
+      <button className={`bg-${theme}-primary text-${theme}-bg w-full text-lg p-3 rounded-xl font-semibold mb-6`}>Přihlásit</button>
     </div>
   );
 };

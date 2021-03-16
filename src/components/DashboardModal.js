@@ -57,11 +57,7 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
   function generateData() {
     return dummyData.slice(0, showTo).map((element, index) => {
       return (
-        <div
-          key={index}
-          className={`w-full flex justify-around text-${theme}-tsec py-1 border-b border-${theme}-tter`}
-          onClick={() => deleteItem(index)}
-        >
+        <div key={index} className={`w-full flex justify-around text-${theme}-tsec py-1`} onClick={() => deleteItem(index)}>
           <div className="flex items-center">
             <IoSkullOutline size="1.3em" />
           </div>

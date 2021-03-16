@@ -8,6 +8,7 @@ import Text from "../templates/Text";
 import DashboardModal from "../components/DashboardModal";
 import LastArrivalsTable from "../components/LastArrivalsTable";
 import IncrementButton from "../templates/IncrementButton";
+import Card from "../templates/Card";
 
 const Dashboard = () => {
   const { theme } = useContext(ThemeContext);
@@ -22,38 +23,45 @@ const Dashboard = () => {
       <CardsComponent />
 
       {/* Arrivals */}
-      <Subheader>Příchody</Subheader>
-      <Text>V grafu níže lze pozorovat měsíční srovnání příchodů v jednotlivých letech.</Text>
+      <Card>
+        <Subheader>Měsíční srovnání v jednotlivých letech</Subheader>
+      </Card>
 
       {/* Individual arrivals */}
-      <Text>Příchody jednotlivých členů</Text>
+      <Card>
+        <Subheader>Příchody jednotlivých členů</Subheader>
+      </Card>
 
       {/* Last arrivals */}
-      <Text>Poslední příchody</Text>
-      <LastArrivalsTable />
+      <Card>
+        <Subheader>Poslední příchody</Subheader>
+        <LastArrivalsTable />
 
-      {/* Last Arrivals Modal */}
-      <Text>Pro zobrazení historie příchodů a jejich správu, klikni na tlačítko níže.</Text>
-      <Button btnStyle="expand-empty" clickFunction={() => setIsModalOpened(true)}>
-        Správa/historie příchodů
-      </Button>
-      <DashboardModal isOpened={isModalOpened} setModalOpened={setIsModalOpened} />
+        {/* Last Arrivals Modal */}
+        <Text>Pro zobrazení historie příchodů a jejich správu, klikni na tlačítko níže.</Text>
+        <Button btnStyle="expand-empty" clickFunction={() => setIsModalOpened(true)}>
+          Správa/historie příchodů
+        </Button>
+        <DashboardModal isOpened={isModalOpened} setModalOpened={setIsModalOpened} />
+      </Card>
 
       {/* Heat mapa */}
-      <Subheader>Heat mapa</Subheader>
-      <Text>Intenzita příchodů za vybraný rok</Text>
-      {/* Recent adding */}
-      <div className={`w-full flex items-center justify-center text-center mt-7 mb-7 text-${theme}-tsec`}>
-        <div className="w-1/5">
-          <IncrementButton clickFunction={() => setSelectedYear(selectedYear - 1)}>-</IncrementButton>
+      <Card>
+        <Subheader>Heat mapa</Subheader>
+        <Text>Intenzita příchodů za vybraný rok</Text>
+        {/* Recent adding */}
+        <div className={`w-full flex items-center justify-center text-center mt-4 mb-4 text-${theme}-tsec`}>
+          <div className="w-1/5">
+            <IncrementButton clickFunction={() => setSelectedYear(selectedYear - 1)}>-</IncrementButton>
+          </div>
+          <div className="w-3/5 text-xl">
+            <p>{selectedYear}</p>
+          </div>
+          <div className="w-1/5">
+            <IncrementButton clickFunction={() => setSelectedYear(selectedYear + 1)}>+</IncrementButton>
+          </div>
         </div>
-        <div className="w-3/5 text-xl">
-          <p>{selectedYear}</p>
-        </div>
-        <div className="w-1/5">
-          <IncrementButton clickFunction={() => setSelectedYear(selectedYear + 1)}>+</IncrementButton>
-        </div>
-      </div>
+      </Card>
       <div className="mb-20"></div>
     </div>
   );

@@ -6,6 +6,8 @@ import PersonSelect from "../templates/PersonSelect";
 import Text from "../templates/Text";
 import IncrementButton from "../templates/IncrementButton";
 import { IoCloseOutline } from "react-icons/io5";
+import Card from "../templates/Card";
+import Subheader from "../templates/Subheader";
 
 const Metrics = () => {
   const { theme } = useContext(ThemeContext);
@@ -55,14 +57,10 @@ const Metrics = () => {
   function getRecentData() {
     return dummyData.slice(currentPage * 10 - 10, currentPage * 10).map((element, index) => {
       return (
-        <div
-          className={`w-full flex justify-around text-${theme}-tsec py-1 shadow-sm rounded-full my-1`}
-          key={index}
-          onClick={() => deleteItem(index)}
-        >
+        <div className={`w-full flex justify-around text-${theme}-tsec py-1 my-1`} key={index} onClick={() => deleteItem(index)}>
           <div className={`w-1/3 flex flex-col justify-center`}>
-            <p>{element.date}</p>
-            <p className={`text-${theme}-primary text-sm`}>{element.kg}</p>
+            <p className={`text-${theme}-primary text-lg`}>{element.kg}</p>
+            <p className="text-sm">{element.date}</p>
           </div>
           <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
             <IoCloseOutline size="1.3em" />
@@ -84,25 +82,28 @@ const Metrics = () => {
         <CardsComponent />
 
         {/* Graph */}
-        <div className="w-full h-52 bg-gray-800 rounded-xl"></div>
+        <div className="w-full h-52 bg-gray-800 rounded-xl mb-10 "></div>
 
         {/* Recent adding */}
-        <div className={`w-full flex items-center justify-center text-center mt-14 mb-7 text-${theme}-tsec`}>
-          <div className="w-1/5">
-            <IncrementButton clickFunction={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}>-</IncrementButton>
+        <Card>
+          <Subheader>Tvé zápisy</Subheader>
+          <div className={`w-full flex items-center justify-center text-center my-4 text-${theme}-tsec`}>
+            <div className="w-1/5">
+              <IncrementButton clickFunction={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}>-</IncrementButton>
+            </div>
+            <div className="w-3/5 text-xl">
+              <p>{currentPage * 10 - 10 + " - " + currentPage * 10}</p>
+            </div>
+            <div className="w-1/5">
+              <IncrementButton clickFunction={() => setCurrentPage(currentPage + 1)}>+</IncrementButton>
+            </div>
           </div>
-          <div className="w-3/5 text-xl">
-            <p>{currentPage * 10 - 10 + " - " + currentPage * 10}</p>
-          </div>
-          <div className="w-1/5">
-            <IncrementButton clickFunction={() => setCurrentPage(currentPage + 1)}>+</IncrementButton>
-          </div>
-        </div>
 
-        {/* Recent Data */}
-        {getRecentData()}
-        <div className="mt-20"></div>
+          {/* Recent Data */}
+          {getRecentData()}
+        </Card>
       </div>
+      <div className="mb-20"></div>
     </div>
   );
 };

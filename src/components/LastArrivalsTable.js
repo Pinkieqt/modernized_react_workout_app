@@ -25,30 +25,30 @@ const LastArrivalsTable = ({ tableData }) => {
       // Color of icon
       switch (element.name) {
         case "Dudu":
-          userColor = "text-green-500";
+          userColor = "text-magma-2";
           break;
         case "Tom":
-          userColor = "text-yellow-500";
+          userColor = "text-magma-3";
           break;
         case "Dejvo":
-          userColor = "text-blue-500";
+          userColor = "text-magma-4";
           break;
         case "Luke":
-          userColor = "text-red-500";
+          userColor = "text-magma-5";
           break;
         default:
-          userColor = "text-500-green";
+          userColor = "text-magma-1";
       }
 
       return (
         <div key={index} className={`w-full flex justify-between text-${theme}-tsec py-2 px-5 `}>
           <div className={`w-1/3 `}>
-            <p className={`text-${theme}-tsec flex flex-row items-center`}>
-              <IoPersonOutline size="1.3em" className={`mr-2 ${userColor}`} />
+            <p className={`text-${theme}-tpr flex flex-row items-center`}>
+              <IoPersonOutline size="1.5em" className={`mr-2 ${userColor}`} />
               {element.name}
             </p>
           </div>
-          <div className={`w-1/3 flex justify-end items-center text-${theme}-tsec`}>{element.date}</div>
+          <div className={`w-1/3 flex justify-end items-center text-${theme}-tpr`}>{element.date}</div>
         </div>
       );
     });

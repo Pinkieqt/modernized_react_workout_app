@@ -4,10 +4,10 @@ import { ThemeContext } from "../providers/ThemeProvider";
 const Button = ({ children, btnStyle, clickFunction }) => {
   const { theme } = useContext(ThemeContext);
 
-  let fullStyle = `w-1/3 bg-${theme}-primary text-white mx-4 my-2 text-lg p-3 rounded-xl`;
+  let fullStyle = `w-1/3 bg-${theme}-primary text-${theme}-bg mx-4 my-2 text-lg p-3 rounded-xl`;
   let emptyStyle = `w-1/3  text-${theme}-primary mx-4 my-2 text-lg p-3 rounded-xl`;
   let expandEmpty = `w-full text-${theme}-primary my-2 text-lg p-3 rounded-xl`;
-  let expandFull = `w-full bg-${theme}-primary text-white my-2 text-lg p-3 rounded-xl`;
+  let expandFull = `w-full bg-${theme}-primary text-${theme}-bg my-2 text-lg p-3 rounded-xl`;
 
   function classStyle() {
     switch (btnStyle) {
