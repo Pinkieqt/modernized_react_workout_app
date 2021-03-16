@@ -10,9 +10,9 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
 
   let dummyData = [
     { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
+    { name: "Tom", date: "23.04.2012" },
+    { name: "Luke", date: "23.04.2012" },
+    { name: "Dejvo", date: "23.04.2012" },
     { name: "Dudu", date: "23.04.2012" },
     { name: "Dudu", date: "23.04.2012" },
     { name: "Dudu", date: "23.04.2012" },
@@ -56,14 +56,34 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
   //Function to generate/render data in modal
   function generateData() {
     return dummyData.slice(0, showTo).map((element, index) => {
+      let userColor = "text-magma-1";
+
+      // Color of icon
+      switch (element.name) {
+        case "Dudu":
+          userColor = "text-magma-2";
+          break;
+        case "Tom":
+          userColor = "text-magma-3";
+          break;
+        case "Dejvo":
+          userColor = "text-magma-4";
+          break;
+        case "Luke":
+          userColor = "text-magma-5";
+          break;
+        default:
+          userColor = "text-magma-1";
+      }
+
       return (
-        <div key={index} className={`w-full flex justify-around text-${theme}-tsec py-1`} onClick={() => deleteItem(index)}>
-          <div className="flex items-center">
+        <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`} onClick={() => deleteItem(index)}>
+          <div className={`flex items-center ${userColor}`}>
             <IoSkullOutline size="1.3em" />
           </div>
           <div className={`w-1/3 flex flex-col justify-center`}>
             <p>{element.name}</p>
-            <p className={`text-${theme}-primary text-sm`}>{element.date}</p>
+            <p className={`text-${theme}-tsec text-sm`}>{element.date}</p>
           </div>
           <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
             <IoCloseOutline size="1.3em" />

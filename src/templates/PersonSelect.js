@@ -10,7 +10,7 @@ const PersonSelect = () => {
     <select
       value={defUser}
       onChange={(e) => setDefUser(e.target.value)}
-      className={`w-2/3 border bg-black bg-opacity-10 border-none text-${theme}-tsec text-base rounded-xl py-2`}
+      className={`w-2/3 border bg-black bg-opacity-10 border-none text-${theme}-tsec text-base rounded-xl py-2 focus:outline-none focus:ring focus:ring-${theme}-primary`}
     >
       <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="dudu">
         Dudu

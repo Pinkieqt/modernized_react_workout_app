@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
-import { IoPersonOutline } from "react-icons/io5";
+import { IoSkullOutline } from "react-icons/io5";
 
 const LastArrivalsTable = ({ tableData }) => {
   const { theme } = useContext(ThemeContext);
@@ -20,7 +20,7 @@ const LastArrivalsTable = ({ tableData }) => {
   //Function to generate/render data in modal
   function generateData() {
     return dummyData.slice(0, 5).map((element, index) => {
-      let userColor = "text-green-500";
+      let userColor = "text-magma-1";
 
       // Color of icon
       switch (element.name) {
@@ -44,7 +44,7 @@ const LastArrivalsTable = ({ tableData }) => {
         <div key={index} className={`w-full flex justify-between text-${theme}-tsec py-2 px-5 `}>
           <div className={`w-1/3 `}>
             <p className={`text-${theme}-tpr flex flex-row items-center`}>
-              <IoPersonOutline size="1.5em" className={`mr-2 ${userColor}`} />
+              <IoSkullOutline size="1.5em" className={`mr-4 ${userColor}`} />
               {element.name}
             </p>
           </div>

@@ -52,15 +52,14 @@ const Weights = () => {
       }
 
       return (
-        <div
-          className="w-1/2 p-2"
-          key={element.label}
-          onClick={() => {
-            setModalData(element);
-            setModalOpened(true);
-          }}
-        >
-          <div className={`w-full h-full rounded-xl bg-${theme}-elev flex flex-col py-2 px-4`}>
+        <div className="w-1/2 p-2" key={element.label}>
+          <div
+            className={`w-full h-full rounded-xl bg-${theme}-elev flex flex-col py-2 px-4`}
+            onClick={() => {
+              setModalData(element);
+              setModalOpened(true);
+            }}
+          >
             <p className={`text-xs ${categoryColor} font-semibold bg-opacity-20 px-2 py-1 rounded-full text-center uppercase`}>{element.cat}</p>
             <p className={`text-${theme}-tpr my-2 text-lg font-semibold text-center`}>{element.label}</p>
             <div className="w-full flex flex-row justify-center text-center">
@@ -99,24 +98,24 @@ const Weights = () => {
         <select
           value={defGroup}
           onChange={(e) => setDefGroup(e.target.value)}
-          className={`w-2/3 my-2 border bg-black bg-opacity-10 border-none text-${theme}-tsec text-base rounded-xl py-2`}
+          className={`w-2/3 my-2 border bg-black bg-opacity-10 border-none text-${theme}-tsec text-base rounded-xl py-2  focus:outline-none focus:ring focus:ring-${theme}-primary`}
         >
           <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="all">
             Všechny partie
           </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="legs">
+          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="nohy">
             Nohy
           </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="chest">
+          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="hrudník">
             Prsa
           </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="back">
+          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="záda">
             Záda
           </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="shoulders">
+          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="ramena">
             Ramena
           </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="arms">
+          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="ruce">
             Ruce
           </option>
         </select>
@@ -155,7 +154,7 @@ const Weights = () => {
                   min="0"
                   max="500"
                   type="number"
-                  className={`focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-4xl  md:text-basecursor-default flex items-center outline-none`}
+                  className={`border-none  focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-4xl  md:text-basecursor-default flex items-center outline-none`}
                   value={inputMax}
                   step="0.5"
                   onChange={(e) => setInputMax(parseFloat(e.target.value).toFixed(1))}
@@ -177,7 +176,7 @@ const Weights = () => {
                   min="0"
                   max="500"
                   type="number"
-                  className={`focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-4xl  md:text-basecursor-default flex items-center outline-none`}
+                  className={`border-none  focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-4xl  md:text-basecursor-default flex items-center outline-none`}
                   value={inputWork}
                   step="0.5"
                   onChange={(e) => setInputWork(parseFloat(e.target.value).toFixed(1))}

@@ -28,7 +28,7 @@ const AddWeightComponent = ({ closeHandler }) => {
             min="40"
             max="500"
             type="number"
-            className={`focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-5xl  md:text-basecursor-default flex items-center outline-none`}
+            className={`border-none focus:outline-none text-center w-full text-${theme}-tpr bg-black bg-opacity-0 font-semibold text-5xl  md:text-basecursor-default flex items-center outline-none`}
             value={inputWeight}
             step="0.1"
             onChange={(e) => setInputWeight(parseFloat(e.target.value).toFixed(1))}
