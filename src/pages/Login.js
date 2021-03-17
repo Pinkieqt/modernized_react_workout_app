@@ -1,10 +1,24 @@
 import React, { useContext, useState } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
+import { Redirect } from "react-router-dom";
+import { signInWithGoogle } from "../utils/Firebase";
+import { AuthContext } from "../App";
 
 const Login = () => {
   const { theme } = useContext(ThemeContext);
   const [staySignedIn, setStaySignedIn] = useState(false);
   const [pass, setPass] = useState("");
+
+  //function to sign in
+  function signIn() {
+    signInWithGoogle(pass, staySignedIn);
+  }
+
+  //redirect if currentuser
+  const currentUser = useContext(AuthContext);
+  if (currentUser) {
+    return <Redirect to="/dashboard" />;
+  }
 
   return (
     <div className={`flex flex-col justify-end items-center w-full min-h-screen p-4 bg-${theme}-bg text-${theme}-tpr`}>
@@ -26,13 +40,15 @@ const Login = () => {
       <label className="inline-flex items-center mb-10">
         <input
           type="checkbox"
-          className="form-checkbox bg-black text-dark-primary rounded h-5 w-5"
+          className={`form-checkbox bg-${theme}-elev text-${theme}-primary rounded h-5 w-5`}
           value={staySignedIn}
           onChange={() => setStaySignedIn(!staySignedIn)}
         ></input>
         <span className={`text-${theme}-tsec ml-3`}> Zůstat v aplikaci přihlášen?</span>
       </label>
-      <button className={`bg-${theme}-primary text-${theme}-bg w-full text-lg p-3 rounded-xl font-semibold mb-6`}>Přihlásit</button>
+      <button onClick={() => signIn()} className={`bg-${theme}-primary text-${theme}-bg w-full text-lg p-3 rounded-xl font-semibold mb-6`}>
+        Přihlásit
+      </button>
     </div>
   );
 };

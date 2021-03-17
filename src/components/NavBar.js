@@ -18,10 +18,10 @@ const NavBar = () => {
       <div
         className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-90 rounded-xl text-${theme}-tsec`}
       >
-        <NavLink to="/Dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
+        <NavLink to="/dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoHomeOutline size="1.7em" />
         </NavLink>
-        <NavLink to="/Metrics" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
+        <NavLink to="/metrics" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoFitnessOutline size="1.7em" />
         </NavLink>
         <div
@@ -32,10 +32,10 @@ const NavBar = () => {
         >
           <IoAddOutline size="2em" />
         </div>
-        <NavLink to="/Weights" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
+        <NavLink to="/weights" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoFileTrayFullOutline size="1.7em" />
         </NavLink>
-        <NavLink to="/Settings" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
+        <NavLink to="/settings" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoCogOutline size="1.7em" />
         </NavLink>
       </div>
