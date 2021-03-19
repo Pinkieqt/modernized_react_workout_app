@@ -5,25 +5,14 @@ import { IoSkullOutline } from "react-icons/io5";
 const LastArrivalsTable = ({ tableData }) => {
   const { theme } = useContext(ThemeContext);
 
-  let dummyData = [
-    { name: "Dudu", date: "23.04." },
-    { name: "Luke", date: "23.04." },
-    { name: "Tom", date: "23.04." },
-    { name: "Dejvo", date: "23.04." },
-    { name: "Dudu", date: "23.04." },
-    { name: "Dudu", date: "23.04" },
-    { name: "Dudu", date: "23.04" },
-    { name: "Dudu", date: "23.04" },
-    { name: "Dudu", date: "23.04" },
-  ];
-
   //Function to generate/render data in modal
   function generateData() {
-    return dummyData.slice(0, 5).map((element, index) => {
+    return tableData.slice(0, 5).map((element, index) => {
       let userColor = "text-magma-1";
+      let tmpDate = element.date.getDate() + "." + (element.date.getMonth() + 1) + ".";
 
       // Color of icon
-      switch (element.name) {
+      switch (element.member) {
         case "Dudu":
           userColor = "text-magma-2";
           break;
@@ -45,10 +34,10 @@ const LastArrivalsTable = ({ tableData }) => {
           <div className={`w-1/3 `}>
             <p className={`text-${theme}-tpr flex flex-row items-center`}>
               <IoSkullOutline size="1.5em" className={`mr-4 ${userColor}`} />
-              {element.name}
+              {element.member}
             </p>
           </div>
-          <div className={`w-1/3 flex justify-end items-center text-${theme}-tpr`}>{element.date}</div>
+          <div className={`w-1/3 flex justify-end items-center text-${theme}-tpr`}>{tmpDate}</div>
         </div>
       );
     });

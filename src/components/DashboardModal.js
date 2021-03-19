@@ -3,63 +3,68 @@ import Modal from "react-responsive-modal";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Button from "../templates/Button";
 import { IoCloseOutline, IoSkullOutline } from "react-icons/io5";
+import { fireStamp, firestore } from "../utils/Firebase";
+import { UsersDataContext } from "../App";
+import { useToasts } from "react-toast-notifications";
 
 const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
   const { theme } = useContext(ThemeContext);
+  const usersData = useContext(UsersDataContext);
+  const { addToast } = useToasts();
+
   const [showTo, setShowTo] = useState(15);
 
-  let dummyData = [
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Tom", date: "23.04.2012" },
-    { name: "Luke", date: "23.04.2012" },
-    { name: "Dejvo", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-    { name: "Dudu", date: "23.04.2012" },
-  ];
-
   //Function to delete item
-  function deleteItem(index) {
-    console.log(index);
+  function deleteItem(element) {
+    let tmpArrivals = [];
+    usersData.forEach((user) => {
+      if (user.name === element.member) {
+        tmpArrivals = user.arrivals;
+        tmpArrivals.forEach((arrival) => {
+          if (arrival.toDate().getTime() === fireStamp.fromDate(element.date).toDate().getTime()) {
+            //Delete arrival from array
+            if (
+              window.confirm(
+                "Opravdu vymazat záznam? (" +
+                  arrival.toDate().getDate() +
+                  "." +
+                  (arrival.toDate().getMonth() + 1) +
+                  "." +
+                  arrival.toDate().getFullYear() +
+                  ", " +
+                  element.member +
+                  ")"
+              )
+            ) {
+              tmpArrivals.splice(tmpArrivals.indexOf(arrival), 1);
+              //Update record in database
+              firestore
+                .collection("users")
+                .doc(user.id)
+                .update({ arrivals: tmpArrivals })
+                .then(() => {
+                  setModalOpened(false);
+                  addToast("Záznam byl vymazán", { appearance: "success" });
+                })
+                .catch(() => {
+                  setModalOpened(false);
+                  addToast("Vyskytla se chyba, zkuz zopakovat za chvíli", { appearance: "error" });
+                });
+            }
+          }
+        });
+      }
+    });
   }
 
   //Function to generate/render data in modal
   function generateData() {
-    return dummyData.slice(0, showTo).map((element, index) => {
+    return modalData.slice(0, showTo).map((element, index) => {
       let userColor = "text-magma-1";
+      let tmpDate = element.date.getDate() + "." + (element.date.getMonth() + 1) + ".";
 
       // Color of icon
-      switch (element.name) {
+      switch (element.member) {
         case "Dudu":
           userColor = "text-magma-2";
           break;
@@ -77,13 +82,13 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
       }
 
       return (
-        <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`} onClick={() => deleteItem(index)}>
+        <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`} onClick={() => deleteItem(element)}>
           <div className={`flex items-center ${userColor}`}>
             <IoSkullOutline size="1.3em" />
           </div>
           <div className={`w-1/3 flex flex-col justify-center`}>
-            <p>{element.name}</p>
-            <p className={`text-${theme}-tsec text-sm`}>{element.date}</p>
+            <p>{element.member}</p>
+            <p className={`text-${theme}-tsec text-sm`}>{tmpDate}</p>
           </div>
           <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
             <IoCloseOutline size="1.3em" />

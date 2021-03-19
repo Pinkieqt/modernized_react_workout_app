@@ -16,6 +16,7 @@ const firebaseConfig = {
 firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
+export const fireStamp = firebase.firestore.Timestamp;
 
 // log in
 export const signInWithGoogle = (pass, stayLogged) => {
