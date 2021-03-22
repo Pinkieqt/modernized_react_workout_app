@@ -5,8 +5,6 @@
   "dependencies": {
     "@craco/craco": "^6.1.1",
     "@hassanmojab/react-modern-calendar-datepicker": "^3.1.7",
-    "@nivo/bar": "^0.67.0",
-    "@nivo/core": "^0.67.0",
     "@tailwindcss/forms": "^0.2.1",
     "@testing-library/jest-dom": "^5.11.9",
     "@testing-library/react": "^11.2.5",
@@ -21,6 +19,7 @@
     "react-spinners": "^0.10.6",
     "react-switch": "^6.0.0",
     "react-toast-notifications": "^2.4.3",
+    "recharts": "^2.0.8",
     "web-vitals": "^1.1.0"
   },
   "scripts": {

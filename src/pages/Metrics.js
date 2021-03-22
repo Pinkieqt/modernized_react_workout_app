@@ -13,6 +13,7 @@ import { DefUserContext } from "../providers/DefaultUserProvider";
 import { useToasts } from "react-toast-notifications";
 import LoadingComponent from "../components/LoadingComponent";
 import { fireStamp, firestore } from "../utils/Firebase";
+import MetricsLineChart from "../charts/MetricsLineChart";
 
 const Metrics = () => {
   const usersData = useContext(UsersDataContext);
@@ -63,7 +64,6 @@ const Metrics = () => {
 
   //Function to delete item
   function deleteItem(element) {
-    console.log(element);
     usersData.forEach((user) => {
       if (user.id === defUser) {
         let tmpWeightData = user.weightData;
@@ -109,7 +109,7 @@ const Metrics = () => {
       .reverse()
       .slice(currentPage * 10 - 10, currentPage * 10)
       .map((element, index) => {
-        let tmpDate = element.date.toDate().getDate() + "." + (element.date.toDate().getMonth() + 1) + ".";
+        let tmpDate = element.date.toDate().getDate() + "." + (element.date.toDate().getMonth() + 1) + " " + element.date.toDate().getFullYear();
         return (
           <div className={`w-full flex justify-around text-${theme}-tsec py-1 my-1`} key={index}>
             <div className={`w-1/3 flex flex-col justify-center`}>
@@ -142,7 +142,11 @@ const Metrics = () => {
             <CardsComponent cardsData={memberCardData} location="weight" />
 
             {/* Graph */}
-            <div className="w-full h-52 bg-gray-800 rounded-xl mb-10 "></div>
+            <Card>
+              <div className="w-full h-48 ">
+                <MetricsLineChart data={memberWeightData} />
+              </div>
+            </Card>
 
             {/* Recent adding */}
             <Card>

@@ -16,7 +16,7 @@ const NavBar = () => {
   return (
     <div className="flex justify-center">
       <div
-        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-90 rounded-xl text-${theme}-tsec`}
+        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-90 rounded-xl text-${theme}-tsec z-50`}
       >
         <NavLink to="/dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoHomeOutline size="1.7em" />
@@ -25,7 +25,7 @@ const NavBar = () => {
           <IoFitnessOutline size="1.7em" />
         </NavLink>
         <div
-          className={`flex items-center justify-center w-14 h-14 bg-gray-700 shadow-xl rounded-full text-white`}
+          className={`flex items-center justify-center w-14 h-14 bg-gray-700 shadow-2xl rounded-full text-white`}
           onClick={() => {
             setModalOpened(!isModalOpened);
           }}

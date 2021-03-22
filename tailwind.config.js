@@ -11,6 +11,7 @@ module.exports = {
           tpr: "#000000",
           tsec: "#8A8A8E",
           tter: "#C4C4C6",
+          heat: "#d9d9d9",
           //colors
           primary: "#007aff",
         },
@@ -21,6 +22,7 @@ module.exports = {
           tpr: "#FFFFFF",
           tsec: "#8D8D93",
           tter: "#47474A",
+          heat: "#313135",
           // colors
           primary: "#C8FF3A",
         },

@@ -61,7 +61,7 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
   function generateData() {
     return modalData.slice(0, showTo).map((element, index) => {
       let userColor = "text-magma-1";
-      let tmpDate = element.date.getDate() + "." + (element.date.getMonth() + 1) + ".";
+      let tmpDate = element.date.getDate() + "." + (element.date.getMonth() + 1) + ". " + element.date.getFullYear();
 
       // Color of icon
       switch (element.member) {
@@ -82,7 +82,7 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
       }
 
       return (
-        <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`} onClick={() => deleteItem(element)}>
+        <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`}>
           <div className={`flex items-center ${userColor}`}>
             <IoSkullOutline size="1.3em" />
           </div>
@@ -91,7 +91,7 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
             <p className={`text-${theme}-tsec text-sm`}>{tmpDate}</p>
           </div>
           <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
-            <IoCloseOutline size="1.3em" />
+            <IoCloseOutline size="1.3em" onClick={() => deleteItem(element)} />
           </div>
         </div>
       );

@@ -7,7 +7,7 @@ const CardsComponent = ({ cardsData, location }) => {
   return (
     <>
       {location === "dashboard" ? (
-        <div className="w-full flex flex-wrap justify-center items-center my-5">
+        <div className="w-full flex flex-wrap justify-center items-center my-3">
           {/* First card */}
           <div className="w-1/2 p-2">
             <div className={`w-full h-full bg-${theme}-elev text-${theme}-primary rounded-xl py-4 px-4 flex flex-col items-center`}>
