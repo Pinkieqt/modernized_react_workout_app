@@ -84,6 +84,7 @@ const AddArrivalComponent = ({ closeHandler }) => {
       <Text className="m-3">Vyber uživatele a potvrď zapsání. Lze vybrat datum i pro pozdější zápisy.</Text>
       <div className="mb-3">
         <DatePicker
+          calendarPopperPosition="bottom"
           calendarClassName="customCalendarDark"
           inputClassName="customCalendarInputDark"
           value={selectedDay}

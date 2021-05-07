@@ -17,7 +17,7 @@
   }
 }
 
-.customModal {
+.customModallight {
   width: 100%;
   height: 100%;
   margin: 0 !important;
@@ -26,7 +26,7 @@
   color: #000000 !important;
 }
 
-.customModalDark {
+.customModaldark {
   width: 100%;
   height: 100%;
   margin: 0 !important;
@@ -35,24 +35,56 @@
   color: #ffffff !important;
 }
 
+.customModalrose {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  box-shadow: none !important;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.customModalmirage {
+  width: 100%;
+  height: 100%;
+  margin: 0 !important;
+  box-shadow: none !important;
+  background-color: #23232f !important;
+  color: #ffffff !important;
+}
+
 /* React Responsive Modal WEIGHT EDITING --------------------------------------------- */
-.customEditModal {
+.customEditModallight {
   width: 90%;
   border-radius: 20px;
   background-color: #ffffff !important;
   color: #000000 !important;
 }
 
-.customEditModalDark {
+.customEditModaldark {
   width: 90%;
   border-radius: 20px;
   background-color: #1c1c1e !important;
+  color: #ffffff !important;
+}
+
+.customEditModalrose {
+  width: 90%;
+  border-radius: 20px;
+  background-color: #ffffff !important;
+  color: #000000 !important;
+}
+
+.customEditModalmirage {
+  width: 90%;
+  border-radius: 20px;
+  background-color: #23232f !important;
   color: #ffffff !important;
 }
 
 /* Modern Calendar Picker --------------------------------------------- */
 .customCalendarDark {
-  color: #ffffff !important;
+  font-size: 8px !important;
 }
 
 .customCalendarInputDark {

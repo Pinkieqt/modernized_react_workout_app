@@ -8,9 +8,9 @@ const ThemeProvider = ({ children }) => {
     <ThemeContext.Provider
       value={{
         theme,
-        setTheme: () => {
-          localStorage.setItem("theme", theme === "dark" ? "light" : "dark");
-          setTheme(theme === "dark" ? "light" : "dark");
+        setTheme: (newTheme) => {
+          localStorage.setItem("theme", newTheme);
+          setTheme(newTheme);
         },
       }}
     >

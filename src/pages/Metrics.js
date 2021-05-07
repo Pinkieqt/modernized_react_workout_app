@@ -12,7 +12,7 @@ import { UsersDataContext } from "../App";
 import { DefUserContext } from "../providers/DefaultUserProvider";
 import { useToasts } from "react-toast-notifications";
 import LoadingComponent from "../components/LoadingComponent";
-import { fireStamp, firestore } from "../utils/Firebase";
+import { firestore } from "../utils/Firebase";
 import MetricsLineChart from "../charts/MetricsLineChart";
 
 const Metrics = () => {

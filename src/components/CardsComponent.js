@@ -19,8 +19,8 @@ const CardsComponent = ({ cardsData, location }) => {
           {/* Second card */}
           <div className="w-1/2 p-2">
             <div className={`w-full h-full bg-${theme}-elev text-${theme}-primary rounded-xl py-4 px-4 flex flex-col items-center`}>
-              <p className="text-sm font-semibold mb-2 text-gray-600">rozdíl příchodů</p>
-              <p className="text-4xl">{cardsData.monthDiffer}</p>
+              <p className="text-sm font-semibold mb-2 text-gray-600">poslední příchod</p>
+              <p className="text-4xl">{cardsData.latest}</p>
             </div>
           </div>
 
@@ -35,8 +35,8 @@ const CardsComponent = ({ cardsData, location }) => {
           {/* fourth card */}
           <div className="w-1/2 p-2">
             <div className={`w-full h-full bg-${theme}-elev text-${theme}-primary rounded-xl py-4 px-4 flex flex-col items-center`}>
-              <p className="text-sm font-semibold mb-2 text-gray-600">poslední příchod</p>
-              <p className="text-4xl">{cardsData.latest}</p>
+              <p className="text-sm font-semibold mb-2 text-gray-600">rozdíl příchodů</p>
+              <p className="text-4xl">{cardsData.monthDiffer}</p>
             </div>
           </div>
         </div>

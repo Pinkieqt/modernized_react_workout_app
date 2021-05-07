@@ -2,7 +2,7 @@ import React, { useContext, useState } from "react";
 import Modal from "react-responsive-modal";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Button from "../templates/Button";
-import { IoCloseOutline, IoSkullOutline } from "react-icons/io5";
+import { IoCloseOutline, IoWalkOutline } from "react-icons/io5";
 import { fireStamp, firestore } from "../utils/Firebase";
 import { UsersDataContext } from "../App";
 import { useToasts } from "react-toast-notifications";
@@ -66,13 +66,13 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
       // Color of icon
       switch (element.member) {
         case "Dudu":
-          userColor = "text-magma-2";
+          userColor = "text-magma-4";
           break;
         case "Tom":
-          userColor = "text-magma-3";
+          userColor = "text-magma-2";
           break;
         case "Dejvo":
-          userColor = "text-magma-4";
+          userColor = "text-magma-3";
           break;
         case "Luke":
           userColor = "text-magma-5";
@@ -84,7 +84,7 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
       return (
         <div key={index} className={`w-full flex justify-around text-${theme}-tpr py-1`}>
           <div className={`flex items-center ${userColor}`}>
-            <IoSkullOutline size="1.3em" />
+            <IoWalkOutline size="1.3em" />
           </div>
           <div className={`w-1/3 flex flex-col justify-center`}>
             <p>{element.member}</p>
@@ -98,14 +98,24 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
     });
   }
 
+  // Dirty fix for scrollLock on iOS devices
+  function isIos() {
+    return (
+      ["iPad Simulator", "iPhone Simulator", "iPod Simulator", "iPad", "iPhone", "iPod"].includes(navigator.platform) ||
+      // iPad on iOS 13 detection
+      (navigator.userAgent.includes("Mac") && "ontouchend" in document)
+    );
+  }
+
   return (
     <Modal
       open={isOpened}
+      blockScroll={!isIos()}
       onClose={() => {
         setModalOpened(false);
       }}
       classNames={{
-        modal: theme === "dark" ? "customModalDark" : "customModal",
+        modal: "customModal" + theme,
       }}
       showCloseIcon={false}
       animationDuration={350}

@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import Switch from "react-switch";
+// import Switch from "react-switch";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Header from "../templates/Header";
 import Subheader from "../templates/Subheader";
@@ -8,6 +8,7 @@ import { Redirect } from "react-router-dom";
 import { logoutGoogle } from "../utils/Firebase";
 import { AuthContext, UsersDataContext } from "../App";
 import Card from "../templates/Card";
+import Text from "../templates/Text";
 
 const Settings = () => {
   const { theme, setTheme } = useContext(ThemeContext);
@@ -34,22 +35,70 @@ const Settings = () => {
     //history.push("/login");
   }
 
+  //colorize selected theme
+  function getBorderColor(curTheme) {
+    return curTheme === theme ? "border-pink-600" : "border-gray-500";
+  }
+
   return (
     <div className={`p-4 min-h-screen bg-${theme}-bg`}>
       <Header>Nastavení</Header>
       <div className={`my-3`}></div>
       <Card>
         {/* Dark mode */}
-        <div className={`w-full flex justify-between items-center my-2 border-b border-${theme}-tter pb-1`}>
-          <Subheader>Dark mode</Subheader>
-          <Switch
+        <Subheader>Barevné téma</Subheader>
+        <Text>Vyber si své oblíbené barevné téma celé aplikace :)</Text>
+        {/* <Switch
             checked={theme === "dark" ? true : false}
             offColor="#1d1f2f"
             onColor="#C8FF3A"
             onHandleColor="#000"
             checkedIcon={false}
             onChange={setTheme}
-          />
+          /> */}
+
+        {/* Theme switcher */}
+        <div className="w-full flex flex-wrap justify-between h-32 mb-6">
+          <div className="w-1/2 h-1/2 p-1">
+            <div
+              className={`w-full h-full flex justify-center items-center text-lg font-semibold bg-light-bg rounded-lg border-2 ${getBorderColor(
+                "light"
+              )} text-light-primary`}
+              onClick={() => setTheme("light")}
+            >
+              breeze
+            </div>
+          </div>
+          <div className="w-1/2 h-1/2 p-1">
+            <div
+              className={`w-full h-full  flex justify-center items-center text-lg font-semibold bg-rose-bg rounded-lg border-2  ${getBorderColor(
+                "rose"
+              )}  text-rose-primary`}
+              onClick={() => setTheme("rose")}
+            >
+              rose
+            </div>
+          </div>
+          <div className="w-1/2 h-1/2 p-1">
+            <div
+              className={`w-full h-full  flex justify-center items-center text-lg font-semibold bg-dark-bg rounded-lg border-2  ${getBorderColor(
+                "dark"
+              )}  text-dark-primary`}
+              onClick={() => setTheme("dark")}
+            >
+              dracula
+            </div>
+          </div>
+          <div className="w-1/2 h-1/2 p-1">
+            <div
+              className={`w-full h-full  flex justify-center items-center text-lg font-semibold bg-mirage-bg rounded-lg border-2  ${getBorderColor(
+                "mirage"
+              )}  text-mirage-primary`}
+              onClick={() => setTheme("mirage")}
+            >
+              mirage
+            </div>
+          </div>
         </div>
 
         {/* Export */}

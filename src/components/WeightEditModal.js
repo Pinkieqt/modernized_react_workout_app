@@ -74,7 +74,7 @@ const WeightEditModal = ({ isOpened, setModalOpened, modalData }) => {
         setModalOpened(false);
       }}
       classNames={{
-        modal: theme === "dark" ? "customEditModalDark" : "customEditModal",
+        modal: "customEditModal" + theme,
       }}
       showCloseIcon={false}
       animationDuration={350}

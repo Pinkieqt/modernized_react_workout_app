@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
-import { IoSkullOutline } from "react-icons/io5";
+import { IoWalkOutline } from "react-icons/io5";
 
 const LastArrivalsTable = ({ tableData }) => {
   const { theme } = useContext(ThemeContext);
@@ -14,13 +14,13 @@ const LastArrivalsTable = ({ tableData }) => {
       // Color of icon
       switch (element.member) {
         case "Dudu":
-          userColor = "text-magma-2";
+          userColor = "text-magma-4";
           break;
         case "Tom":
-          userColor = "text-magma-3";
+          userColor = "text-magma-2";
           break;
         case "Dejvo":
-          userColor = "text-magma-4";
+          userColor = "text-magma-3";
           break;
         case "Luke":
           userColor = "text-magma-5";
@@ -33,7 +33,7 @@ const LastArrivalsTable = ({ tableData }) => {
         <div key={index} className={`w-full flex justify-between text-${theme}-tsec py-2 px-5 `}>
           <div className={`w-1/3 `}>
             <p className={`text-${theme}-tpr flex flex-row items-center`}>
-              <IoSkullOutline size="1.5em" className={`mr-4 ${userColor}`} />
+              <IoWalkOutline size="1.5em" className={`mr-6 ${userColor}`} />
               {element.member}
             </p>
           </div>

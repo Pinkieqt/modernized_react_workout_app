@@ -3,7 +3,7 @@ import { ThemeContext } from "../providers/ThemeProvider";
 import { Redirect } from "react-router-dom";
 import { signInWithGoogle } from "../utils/Firebase";
 import { AuthContext } from "../App";
-import Top from "../logo.svg";
+// import Top from "../logo.svg";
 
 const Login = () => {
   const { theme } = useContext(ThemeContext);
@@ -26,7 +26,7 @@ const Login = () => {
       {/* Logo */}
       {theme === "dark" ? (
         <div className="w-36 mt-2 text-center">
-          <img src={Top} alt="Logo" />
+          {/* <img src={Top} alt="Logo" /> */}
           <h1 className="uppercase mt-2 font-semibold text-dark-primary">gym journal</h1>
           <h1 className=" text-sm text-dark-tsec">with love by Dudu.</h1>
         </div>
@@ -38,7 +38,7 @@ const Login = () => {
       )}
 
       {/* Bottom */}
-      <div className="w-full">
+      <div className="w-full md:w-1/3">
         <div className="text-5xl my-14">
           <p>Vítej</p>
           <p>zpátky!</p>
@@ -48,7 +48,7 @@ const Login = () => {
           type="password"
           placeholder="Password"
           onChange={(e) => setPass(e.target.value)}
-          className={`w-full p-3 mb-3 rounded-xl bg-${theme}-elev focus:outline-none focus:ring-2 focus:ring-${theme}-primary focus:border-transparent`}
+          className={`w-full p-3 my-3 rounded-xl bg-${theme}-elev focus:outline-none focus:ring-2 focus:ring-${theme}-primary focus:border-transparent`}
         ></input>
 
         {/* Checkbox */}

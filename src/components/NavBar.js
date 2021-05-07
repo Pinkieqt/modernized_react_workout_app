@@ -1,6 +1,15 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import { IoHomeOutline, IoCogOutline, IoFitnessOutline, IoFileTrayFullOutline, IoAddOutline, IoCloseOutline } from "react-icons/io5";
+import {
+  IoHomeOutline,
+  IoCogOutline,
+  IoFitnessOutline,
+  IoFileTrayFullOutline,
+  IoLayersOutline,
+  IoAddOutline,
+  IoCloseOutline,
+  IoChevronUpOutline,
+} from "react-icons/io5";
 import { ThemeContext } from "../providers/ThemeProvider";
 
 import "react-responsive-modal/styles.css";
@@ -16,7 +25,7 @@ const NavBar = () => {
   return (
     <div className="flex justify-center">
       <div
-        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-90 rounded-xl text-${theme}-tsec z-50`}
+        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-85 rounded-xl shadow-lg text-${theme}-tsec z-50`}
       >
         <NavLink to="/dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoHomeOutline size="1.7em" />
@@ -30,10 +39,10 @@ const NavBar = () => {
             setModalOpened(!isModalOpened);
           }}
         >
-          <IoAddOutline size="2em" />
+          <IoChevronUpOutline size="2em" />
         </div>
         <NavLink to="/weights" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
-          <IoFileTrayFullOutline size="1.7em" />
+          <IoLayersOutline size="1.7em" />
         </NavLink>
         <NavLink to="/settings" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoCogOutline size="1.7em" />
@@ -45,7 +54,7 @@ const NavBar = () => {
         open={isModalOpened}
         onClose={() => setModalOpened(false)}
         classNames={{
-          modal: theme === "dark" ? "customModalDark" : "customModal",
+          modal: "customModal" + theme,
         }}
         showCloseIcon={false}
         animationDuration={350}

@@ -5,7 +5,7 @@ import { UsersDataContext } from "../App";
 import Header from "../templates/Header";
 import PersonSelect from "../templates/PersonSelect";
 import Text from "../templates/Text";
-import { useToasts } from "react-toast-notifications";
+// import { useToasts } from "react-toast-notifications";
 import { DefUserContext } from "../providers/DefaultUserProvider";
 import WeightEditModal from "../components/WeightEditModal";
 import Exercises from "../helpfiles/Exercises";
