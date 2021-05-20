@@ -38,7 +38,7 @@ const DashboardHeatmap = ({ data, selectedYear }) => {
       return (
         <div
           key={index}
-          className={`w-3 h-3 ${color} rounded-full m-0.5`}
+          className={`w-3 h-3 ${color} rounded-full m-0.5 cursor-pointer hover:bg-${theme}-primary transition duration-500 transform hover:scale-150`}
           onClick={() => alert("Dne " + element + "_" + selectedYear + ": " + days[element])}
         ></div>
       );

@@ -1,15 +1,6 @@
 import React, { useState } from "react";
 import { NavLink } from "react-router-dom";
-import {
-  IoHomeOutline,
-  IoCogOutline,
-  IoFitnessOutline,
-  IoFileTrayFullOutline,
-  IoLayersOutline,
-  IoAddOutline,
-  IoCloseOutline,
-  IoChevronUpOutline,
-} from "react-icons/io5";
+import { IoHomeOutline, IoCogOutline, IoFitnessOutline, IoLayersOutline, IoCloseOutline, IoChevronUpOutline } from "react-icons/io5";
 import { ThemeContext } from "../providers/ThemeProvider";
 
 import "react-responsive-modal/styles.css";
@@ -25,7 +16,7 @@ const NavBar = () => {
   return (
     <div className="flex justify-center">
       <div
-        className={`fixed bottom-0 w-11/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-85 rounded-xl shadow-lg text-${theme}-tsec z-50`}
+        className={`fixed bottom-0 w-11/12 lg:w-3/12 h-12 flex items-center justify-around mb-3 bg-${theme}-nav bg-opacity-85 rounded-xl shadow-lg text-${theme}-tsec z-50`}
       >
         <NavLink to="/dashboard" activeClassName={`text-${theme}-primary`} className="w-12 h-12 rounded-2xl flex items-center justify-center">
           <IoHomeOutline size="1.7em" />
@@ -34,7 +25,7 @@ const NavBar = () => {
           <IoFitnessOutline size="1.7em" />
         </NavLink>
         <div
-          className={`flex items-center justify-center w-14 h-14 bg-gray-700 shadow-2xl rounded-full text-white`}
+          className={`flex items-center justify-center w-14 h-14 bg-gray-700 shadow-2xl rounded-full text-white cursor-pointer hover:bg-gray-600 transition duration-500`}
           onClick={() => {
             setModalOpened(!isModalOpened);
           }}

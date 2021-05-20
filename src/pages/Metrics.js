@@ -2,8 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import CardsComponent from "../components/CardsComponent";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Header from "../templates/Header";
-import PersonSelect from "../templates/PersonSelect";
-import Text from "../templates/Text";
 import IncrementButton from "../templates/IncrementButton";
 import { IoCloseOutline } from "react-icons/io5";
 import Card from "../templates/Card";
@@ -119,7 +117,11 @@ const Metrics = () => {
               <p className="text-sm">{tmpDate}</p>
             </div>
             <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
-              <IoCloseOutline size="1.3em" onClick={() => deleteItem(element)} />
+              <IoCloseOutline
+                size="1.3em"
+                className={`cursor-pointer hover:text-${theme}-primary transition duration-500`}
+                onClick={() => deleteItem(element)}
+              />
             </div>
           </div>
         );
@@ -131,43 +133,45 @@ const Metrics = () => {
       {memberWeightData === null ? (
         <LoadingComponent />
       ) : (
-        <div className={`p-4 min-h-screen bg-${theme}-bg`}>
-          <Header>Metriky</Header>
-          <Text>Po vybrání uživatele se zobrazí váhové statistiky daného uživatele.</Text>
+        <div className={`min-h-screen bg-${theme}-bg`}>
+          <div className={`p-4 min-h-screen bg-${theme}-bg mx-auto lg:w-1/3`}>
+            <Header>Metriky</Header>
+            {/* <Text>Po vybrání uživatele se zobrazí váhové statistiky daného uživatele.</Text> */}
 
-          <div className="w-full flex flex-col justify-center items-center">
-            <PersonSelect />
+            <div className="w-full flex flex-col justify-center items-center">
+              {/* <PersonSelect /> */}
 
-            {/* Cards */}
-            <CardsComponent cardsData={memberCardData} location="weight" />
+              {/* Cards */}
+              <CardsComponent cardsData={memberCardData} location="weight" />
 
-            {/* Graph */}
-            <Card>
-              <div className="w-full h-48 ">
-                <MetricsLineChart data={memberWeightData} />
-              </div>
-            </Card>
-
-            {/* Recent adding */}
-            <Card>
-              <Subheader>Tvá historie zápisů</Subheader>
-              <div className={`w-full flex items-center justify-center text-center my-4 text-${theme}-tsec`}>
-                <div className="w-1/5">
-                  <IncrementButton clickFunction={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}>-</IncrementButton>
+              {/* Graph */}
+              <Card>
+                <div className="w-full h-48 ">
+                  <MetricsLineChart data={memberWeightData} />
                 </div>
-                <div className="w-3/5 text-xl">
-                  <p>{currentPage * 10 - 10 + " - " + currentPage * 10}</p>
-                </div>
-                <div className="w-1/5">
-                  <IncrementButton clickFunction={() => setCurrentPage(currentPage + 1)}>+</IncrementButton>
-                </div>
-              </div>
+              </Card>
 
-              {/* Recent Data */}
-              {getRecentData()}
-            </Card>
+              {/* Recent adding */}
+              <Card>
+                <Subheader>Tvá historie zápisů</Subheader>
+                <div className={`w-full flex items-center justify-center text-center my-4 text-${theme}-tsec`}>
+                  <div className="w-1/5">
+                    <IncrementButton clickFunction={() => setCurrentPage(currentPage === 1 ? 1 : currentPage - 1)}>-</IncrementButton>
+                  </div>
+                  <div className="w-3/5 text-xl">
+                    <p>{currentPage * 10 - 10 + " - " + currentPage * 10}</p>
+                  </div>
+                  <div className="w-1/5">
+                    <IncrementButton clickFunction={() => setCurrentPage(currentPage + 1)}>+</IncrementButton>
+                  </div>
+                </div>
+
+                {/* Recent Data */}
+                {getRecentData()}
+              </Card>
+            </div>
+            <div className="mb-20"></div>
           </div>
-          <div className="mb-20"></div>
         </div>
       )}
     </>

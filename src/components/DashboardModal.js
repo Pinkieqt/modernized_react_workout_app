@@ -90,8 +90,12 @@ const DashboardModal = ({ isOpened, setModalOpened, modalData }) => {
             <p>{element.member}</p>
             <p className={`text-${theme}-tsec text-sm`}>{tmpDate}</p>
           </div>
-          <div className={`w-1/3 flex justify-end items-center text-${theme}-tter`}>
-            <IoCloseOutline size="1.3em" onClick={() => deleteItem(element)} />
+          <div className={`w-1/3 flex justify-end items-center text-${theme}-tter `}>
+            <IoCloseOutline
+              size="1.3em"
+              className={`cursor-pointer hover:text-${theme}-primary transition duration-500`}
+              onClick={() => deleteItem(element)}
+            />
           </div>
         </div>
       );

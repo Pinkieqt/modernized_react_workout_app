@@ -3,18 +3,27 @@ import { useState } from "react";
 import { ThemeContext } from "../providers/ThemeProvider";
 import { UsersDataContext } from "../App";
 import Header from "../templates/Header";
-import PersonSelect from "../templates/PersonSelect";
 import Text from "../templates/Text";
-// import { useToasts } from "react-toast-notifications";
 import { DefUserContext } from "../providers/DefaultUserProvider";
 import WeightEditModal from "../components/WeightEditModal";
 import Exercises from "../helpfiles/Exercises";
+import { Listbox } from "@headlessui/react";
+import { IoCheckmarkOutline, IoChevronDownOutline } from "react-icons/io5";
+
+const options = [
+  { keyval: "all", name: "Všechny partie" },
+  { keyval: "legs", name: "Nohy" },
+  { keyval: "chest", name: "Hrudník" },
+  { keyval: "back", name: "Záda" },
+  { keyval: "shoulders", name: "Ramena" },
+  { keyval: "arms", name: "Ruce" },
+];
 
 const Weights = () => {
   const usersData = useContext(UsersDataContext);
   const { defUser } = useContext(DefUserContext);
   const { theme } = useContext(ThemeContext);
-  const [defGroup, setDefGroup] = useState("all");
+  const [defGroup, setDefGroup] = useState(options[0]);
   const [isModalOpened, setModalOpened] = useState(false);
   const [modalData, setModalData] = useState({});
   const [cardsData, setCardsData] = useState([]);
@@ -28,7 +37,7 @@ const Weights = () => {
     //Generate cards data
     if (memberData) {
       let tmpCardsData = Exercises.map((exercise) => {
-        if (exercise.category === defGroup || defGroup === "all") {
+        if (exercise.category === defGroup.keyval || defGroup.keyval === "all") {
           let categoryColor = "";
           switch (exercise.category) {
             case "chest":
@@ -62,7 +71,7 @@ const Weights = () => {
           return (
             <div className="w-1/2 p-2" key={exercise.key}>
               <div
-                className={`w-full h-full rounded-xl bg-${theme}-elev flex flex-col py-2 px-4`}
+                className={`w-full h-full rounded-xl bg-${theme}-elev flex flex-col py-2 px-4 cursor-pointer`}
                 onClick={() => {
                   setModalData({ key: exercise.key, work: work, max: max, label: exercise.label });
                   setModalOpened(true);
@@ -94,47 +103,57 @@ const Weights = () => {
 
   // Render return
   return (
-    <div className={`p-4 min-h-screen bg-${theme}-bg text-${theme}-tpr`}>
-      <Header>Váhy cviků</Header>
-      <Text>Vyber uživatele a uprav váhy kliknutím na kartu požadovaného cviku.</Text>
-      <Text> Můžeš si také zobrazit pouze vybranou svalovou skupinu.</Text>
+    <div className={`min-h-screen bg-${theme}-bg`}>
+      <div className={`p-4 min-h-screen bg-${theme}-bg mx-auto lg:w-1/3 text-${theme}-tpr`}>
+        <Header>Váhy cviků</Header>
+        <Text>Váhy lze upravit kliknutím na kartu požadovaného cviku.</Text>
+        <Text>Můžeš si také zobrazit pouze vybranou svalovou skupinu.</Text>
 
-      {/* User Selector */}
-      <div className="w-full flex flex-wrap justify-center ">
-        <PersonSelect />
+        {/* User Selector */}
+        <div className="w-full flex flex-wrap justify-center ">
+          {/* <PersonSelect /> */}
 
-        {/* Muscle Group Select */}
-        <select
-          value={defGroup}
-          onChange={(e) => setDefGroup(e.target.value)}
-          className={`w-2/3 my-2 border bg-black bg-opacity-10 border-none text-${theme}-tsec text-base rounded-xl py-2  focus:outline-none focus:ring focus:ring-${theme}-primary`}
-        >
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="all">
-            Všechny partie
-          </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="legs">
-            Nohy
-          </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="chest">
-            Hrudník
-          </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="back">
-            Záda
-          </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="shoulders">
-            Ramena
-          </option>
-          <option className={`py-1 text-${theme}-tsec bg-${theme}-elev`} value="arms">
-            Ruce
-          </option>
-        </select>
+          {/* Muscle Group Select */}
+          <div className="w-2/3 mb-2">
+            <Listbox value={defGroup} onChange={setDefGroup}>
+              <div className="relative mt-1">
+                <Listbox.Button
+                  className={`w-full flex flex-row justify-between items-center px-5 py-2 border bg-black bg-opacity-10 border-none text-${theme}-tsec rounded-xl`}
+                >
+                  <span>{defGroup.name}</span>
+                  <span>
+                    <IoChevronDownOutline size="1.4em" />
+                  </span>
+                </Listbox.Button>
+                <Listbox.Options
+                  className={`absolute w-full px-5 py-1 mt-1 overflow-auto bg-${theme}-bg text-${theme}-tsec rounded-xl shadow-lg ring-1 ring-${theme}-primary`}
+                >
+                  {options.map((el) => (
+                    <Listbox.Option key={el.keyval} value={el} className="mb-1 cursor-default select-none relative py-2 pl-10 pr-4">
+                      {({ selected }) => (
+                        <div className="cursor-pointer ">
+                          {selected ? (
+                            <span className={`absolute inset-y-0 left-0 flex items-center`}>
+                              <IoCheckmarkOutline className={`text-${theme}-primary`} size="1.4em" />
+                            </span>
+                          ) : null}
+                          <span className={`${selected ? `text-${theme}-primary text-lg` : ""}block truncate`}>{el.name}</span>
+                        </div>
+                      )}
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </div>
+            </Listbox>
+          </div>
+        </div>
+
+        {/* Cards */}
+        <div className="w-full flex flex-wrap justify-between mb-20">{cardsData}</div>
+
+        {/* Modal */}
+        <WeightEditModal isOpened={isModalOpened} setModalOpened={setModalOpened} modalData={modalData} />
       </div>
-
-      {/* Cards */}
-      <div className="w-full flex flex-wrap justify-between mb-20">{cardsData}</div>
-
-      {/* Modal */}
-      <WeightEditModal isOpened={isModalOpened} setModalOpened={setModalOpened} modalData={modalData} />
     </div>
   );
 };

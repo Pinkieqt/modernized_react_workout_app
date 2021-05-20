@@ -2,7 +2,20 @@ module.exports = {
   purge: {
     content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
     options: {
-      safelist: [/bg-dark/, /bg-light/, /text-dark/, /text-light/, /border-dark/, /border-light/],
+      safelist: [
+        /bg-dark/,
+        /bg-light/,
+        /bg-rose/,
+        /bg-mirage/,
+        /text-dark/,
+        /text-light/,
+        /text-rose/,
+        /text-mirage/,
+        /border-dark/,
+        /border-light/,
+        /border-rose/,
+        /border-mirage/,
+      ],
     },
   },
   darkMode: false, // or 'media' or 'class'

@@ -5,7 +5,6 @@ import { DefUserContext } from "../providers/DefaultUserProvider";
 import { ThemeContext } from "../providers/ThemeProvider";
 import Button from "../templates/Button";
 import IncrementButton from "../templates/IncrementButton";
-import PersonSelect from "../templates/PersonSelect";
 import Text from "../templates/Text";
 import { fireStamp, firestore } from "../utils/Firebase";
 
@@ -28,7 +27,7 @@ const AddWeightComponent = ({ closeHandler }) => {
     //Set it as state
     if (tmpWeight !== undefined) setInputWeight(tmpWeight.weight);
     else setInputWeight(70);
-  }, [defUser]);
+  }, [defUser, usersData]);
 
   //Function to call on submit
   function onSubmit() {
@@ -75,8 +74,8 @@ const AddWeightComponent = ({ closeHandler }) => {
 
   return (
     <div className="flex flex-col items-center text-center">
-      <Text>Vyber se, zadej svou váhu a poté ulož změny.</Text>
-      <PersonSelect />
+      <Text>Zadej svou váhu a poté ulož změny.</Text>
+      {/* <PersonSelect /> */}
 
       <div className="w-full flex flex-row items-center justify-center mt-14">
         <div className="w-1/5">
